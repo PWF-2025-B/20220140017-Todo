@@ -9,15 +9,39 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="post" action="{{ route('todo.update', $todo) }}" class="">
+                    <h3 class="text-lg font-semibold mb-4">{{ __('Edit Todo') }}</h3>
+
+                    <form method="POST" action="{{ route('todo.update', $todo) }}">
                         @csrf
-                        @method('patch')
+                        @method('PATCH')
 
                         <div class="mb-6">
                             <x-input-label for="title" :value="__('Title')" />
-                            <x-text-input id="title" name="title" type="text" class="mt-1 block w-full"
-                                :value="old('name', $todo->title)" required autofocus autocomplete="title" />
+                            <x-text-input 
+                                id="title" 
+                                name="title" 
+                                type="text" 
+                                class="mt-1 block w-full" 
+                                :value="old('title', $todo->title)" 
+                                required 
+                                autofocus 
+                                autocomplete="title" 
+                            />
                             <x-input-error class="mt-2" :messages="$errors->get('title')" />
+                        </div>
+
+                        <div class="mb-6">
+                            <x-input-label for="category_id" :value="__('Category')" />
+                            <x-select id="category_id" name="category_id" class="block w-full mt-1">
+                                <option value="">Empty</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" 
+                                        {{ ($todo->category && $category->id == $todo->category->id) ? 'selected' : '' }}>
+                                        {{ $category->title }}
+                                    </option>
+                                @endforeach
+                            </x-select>
+                            <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
                         </div>
 
                         <div class="flex items-center gap-4">

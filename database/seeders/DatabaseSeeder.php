@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Todo;
-use Illuminate\Database\Seeder;
 use App\Models\User;
-use Illuminate\Support\Str;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\Todo;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +29,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(100)->create();
+        Category::factory(200)->create();
         Todo::factory(500)->create();
     }
 }
