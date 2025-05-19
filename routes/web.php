@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/pzn', function () {
+    return "Hello Programmer Zaman Now";
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -18,7 +18,9 @@ class CategoryFactory extends Factory
     {
         return [
             'user_id' => rand(1, 100),
-            'title'   => ucwords(fake()->word()),
+            'title' => ucwords(
+                fake()->word(),
+            )
         ];
     }
 }

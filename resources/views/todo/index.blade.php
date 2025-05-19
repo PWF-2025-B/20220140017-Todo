@@ -57,11 +57,11 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         @if (!$todo->is_done)
-                                            <span class="inline-flex items-center bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300">
+                                            <span class="inline-flex items-center bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded dark:bg-red-900 dark:text-red-300">
                                                 On Going
                                             </span>
                                         @else
-                                            <span class="inline-flex items-center bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
+                                            <span class="inline-flex items-center bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded dark:bg-green-900 dark:text-green-300">
                                                 Completed
                                             </span>
                                         @endif
@@ -71,15 +71,15 @@
                                             <form action="{{ route('todo.complete', $todo) }}" method="POST" class="inline">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button type="submit" class="text-green-600 hover:underline dark:text-green-400 text-xs">
-                                                    Complete
+                                                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-3 py-1 rounded">
+                                                    Done
                                                 </button>
                                             </form>
                                         @else
                                             <form action="{{ route('todo.uncomplete', $todo) }}" method="POST" class="inline">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button type="submit" class="text-blue-600 hover:underline dark:text-blue-400 text-xs">
+                                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-1 rounded">
                                                     Uncomplete
                                                 </button>
                                             </form>
@@ -88,7 +88,9 @@
                                         <form action="{{ route('todo.destroy', $todo) }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
-                                           <button type="submit" class="text-red-600 dark:text-red-400">Delete</button>
+                                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-1 rounded">
+                                                Delete
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
