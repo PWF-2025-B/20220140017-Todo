@@ -17,7 +17,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'verified')->group(function () {
     Route::resource('todo', TodoController::class)->except(['show']);
     Route::resource('category', CategoryController::class);
 
