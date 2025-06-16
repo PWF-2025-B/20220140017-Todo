@@ -3,18 +3,17 @@
 namespace App\Exceptions;
 
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Http\Response;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class InvalidToken extends ExceptionHandler
+class Handler extends ExceptionHandler
 {
     public function render($request, Throwable $exception)
     {
-        // Jika ada AuthenticationException, pastikan selalu JSON
         if ($exception instanceof AuthenticationException) {
             return response()->json([
                 'success' => false,

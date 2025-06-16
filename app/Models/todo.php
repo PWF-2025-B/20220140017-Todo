@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Todo extends Model
 {
     use HasFactory;
+
     protected $fillable = ['title', 'user_id', 'category_id', 'is_done'];
+
+    protected $casts = [
+        'is_done' => 'boolean',  // ini untuk memastikan is_done dibaca sebagai true/false
+    ];
 
     public function user()
     {

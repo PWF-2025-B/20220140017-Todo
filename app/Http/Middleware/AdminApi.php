@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminAp
+class AdminApi
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class AdminAp
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::guard('api')->user();
-        if (!$user || !$user->id_admin) {
+        if (!$user || !$user->is_admin) {
             return response()->json([
                 'success' => false,
                 'message' => 'Unauthorized access',
